@@ -3,6 +3,7 @@
 
 #include "classes/Player.h"
 #include "classes/Platform.h"
+#include "classes/CollisionHandler.h"
 
 int main(int argc, char **argv) {
     InitWindow(800, 600, "Braid");
@@ -14,20 +15,11 @@ int main(int argc, char **argv) {
         // update
         player.move();
 
+        CollisionHandler collisionHandler;
+
         // check if there is a collision between the player and rectangle
         if (CheckCollisionRecs(player.toRectangle(), platform.toRectangle())) {
-            // if the platform can be jumped through
-            // and the player's y-coordinate is greater than the platform's y-coordinate
-            if (platform.getCanJumpThrough()) {
-                if (player.getY() <= platform.getY()) {
-                    player.setX(player.getPrevX());
-                    player.setY(platform.getY() - player.getHeight());
-                }
-            } else {
-                // prevent the player from moving forwards
-                player.setX(player.getPrevX());
-                player.setY(player.getPrevY());
-            }
+            collisionHandler.handlePlayerPlatform(&player, platform);
         }
 
         // update previous player coordinates
