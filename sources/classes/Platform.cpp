@@ -6,6 +6,11 @@ Platform::Platform(float x, float y, float width, float height) {
     this->y = y;
     this->width = width;
     this->height = height;
+    this->canJumpThrough = false;
+}
+
+Platform::Platform(float x, float y, float width, float height, bool canJumpThrough) : Platform(x, y, width, height) {
+    this->canJumpThrough = canJumpThrough;
 }
 
 float Platform::getX() {
@@ -38,6 +43,14 @@ float Platform::getHeight() {
 
 void Platform::setHeight(float height) {
     this->height = height;
+}
+
+bool Platform::getCanJumpThrough() {
+    return canJumpThrough;
+}
+
+void Platform::setCanJumpThrough(bool canJumpThrough) {
+    this->canJumpThrough = canJumpThrough;
 }
 
 Rectangle Platform::toRectangle() {

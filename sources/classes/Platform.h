@@ -9,9 +9,12 @@ private:
     float y;
     float width;
     float height;
+    bool canJumpThrough;
 
 public:
     Platform(float x, float y, float width, float height);
+
+    Platform(float x, float y, float width, float height, bool canJumpThrough);
 
     float getX();
 
@@ -27,10 +30,13 @@ public:
 
     float getHeight();
 
+    bool getCanJumpThrough();
+
+    void setCanJumpThrough(bool canJumpThrough);
+
     void setHeight(float height);
 
     Rectangle toRectangle();
 };
-
 
 #endif //BRAID_PLATFORM_H
