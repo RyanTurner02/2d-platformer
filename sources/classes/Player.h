@@ -5,8 +5,20 @@
 #include "raylib.h"
 
 class Player : public Character {
+private:
+    float prevX;
+    float prevY;
+
 public:
     Player(float x, float y, float width, float height, float speed);
+
+    float getPrevX();
+
+    void setPrevX(float prevX);
+
+    float getPrevY();
+
+    void setPrevY(float prevY);
 
     void move() override;
 

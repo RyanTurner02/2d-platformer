@@ -10,9 +10,6 @@ int main(int argc, char **argv) {
     Player player(200, 200, 10, 10, 100);
     Platform platform(100, 300, 200, 50);
 
-    float prevPlayerX = player.getX();
-    float prevPlayerY = player.getY();
-
     while (!WindowShouldClose()) {
         // update
         player.move();
@@ -20,13 +17,13 @@ int main(int argc, char **argv) {
         // check if there is a collision between the player and rectangle
         if (CheckCollisionRecs(player.toRectangle(), platform.toRectangle())) {
             // prevent the player from moving forwards
-            player.setX(prevPlayerX);
-            player.setY(prevPlayerY);
+            player.setX(player.getPrevX());
+            player.setY(player.getPrevY());
         }
 
         // update previous player coordinates
-        prevPlayerX = player.getX();
-        prevPlayerY = player.getY();
+        player.setPrevX(player.getX());
+        player.setPrevY(player.getY());
 
         // draw
         BeginDrawing();
