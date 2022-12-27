@@ -1,14 +1,32 @@
+#include <iostream>
 #include <raylib.h>
+
 #include "classes/Player.h"
+#include "classes/Platform.h"
 
 int main(int argc, char **argv) {
     InitWindow(800, 600, "Braid");
 
     Player player(200, 200, 10, 10, 100);
+    Platform platform(100, 300, 200, 50);
+
+    float prevPlayerX = player.getX();
+    float prevPlayerY = player.getY();
 
     while (!WindowShouldClose()) {
         // update
         player.move();
+
+        // check if there is a collision between the player and rectangle
+        if (CheckCollisionRecs(player.toRectangle(), platform.toRectangle())) {
+            // prevent the player from moving forwards
+            player.setX(prevPlayerX);
+            player.setY(prevPlayerY);
+        }
+
+        // update previous player coordinates
+        prevPlayerX = player.getX();
+        prevPlayerY = player.getY();
 
         // draw
         BeginDrawing();
@@ -16,7 +34,8 @@ int main(int argc, char **argv) {
             ClearBackground(BLACK);
             DrawFPS(10, 10);
 
-            DrawRectangle(player.getX(), player.getY(), player.getWidth(), player.getHeight(), WHITE);
+            DrawRectangleRec(platform.toRectangle(), BLUE);
+            DrawRectangleRec(player.toRectangle(), WHITE);
 
             DrawText("Hello World!", 100, 100, 20, WHITE);
         }

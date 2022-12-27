@@ -20,3 +20,7 @@ void Player::move() {
         this->setX(this->getX() + this->getSpeed() * GetFrameTime());
     }
 }
+
+Rectangle Player::toRectangle() {
+    return Rectangle{this->getX(), this->getY(), this->getWidth(), this->getHeight()};
+}
