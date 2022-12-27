@@ -4,7 +4,7 @@
 int main(int argc, char **argv) {
     InitWindow(800, 600, "Braid");
 
-    Player player(200, 200, 100);
+    Player player(200, 200, 10, 10, 100);
 
     while (!WindowShouldClose()) {
         // update
@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
             ClearBackground(BLACK);
             DrawFPS(10, 10);
 
-            DrawRectangle(player.getX(), player.getY(), 10, 10, WHITE);
+            DrawRectangle(player.getX(), player.getY(), player.getWidth(), player.getHeight(), WHITE);
 
             DrawText("Hello World!", 100, 100, 20, WHITE);
         }

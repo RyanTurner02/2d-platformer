@@ -5,10 +5,12 @@ class Character {
 private:
     float x;
     float y;
+    float width;
+    float height;
     float speed;
 
 public:
-    Character(float x, float y, float speed);
+    Character(float x, float y, float width, float height, float speed);
 
     float getX();
 
@@ -17,6 +19,14 @@ public:
     float getY();
 
     void setY(float y);
+
+    float getWidth();
+
+    void setWidth(float width);
+
+    float getHeight();
+
+    void setHeight(float height);
 
     float getSpeed();
 

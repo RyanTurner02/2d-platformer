@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "raylib.h"
 
-Player::Player(float x, float y, float speed) : Character(x, y, speed) {};
+Player::Player(float x, float y, float width, float height, float speed) : Character(x, y, width, height, speed) {};
 
 void Player::move() {
     if (IsKeyDown(KEY_UP)) {

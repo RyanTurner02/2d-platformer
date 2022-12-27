@@ -5,7 +5,7 @@
 
 class Player : public Character {
 public:
-    Player(float x, float y, float speed);
+    Player(float x, float y, float width, float height, float speed);
 
     void move() override;
 };
