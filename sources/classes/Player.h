@@ -3,9 +3,11 @@
 
 #include "Character.h"
 
-class Player : Character {
+class Player : public Character {
+public:
+    Player(float x, float y, float speed);
 
+    void move() override;
 };
-
 
 #endif //BRAID_PLAYER_H

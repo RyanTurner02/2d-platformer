@@ -1,31 +1,31 @@
 #include "Character.h"
 
-Character::Character(int x, int y, int speed) {
+Character::Character(float x, float y, float speed) {
     this->x = x;
     this->y = y;
     this->speed = speed;
 }
 
-int Character::getX() {
+float Character::getX() {
     return x;
 }
 
-void Character::setX(int x) {
+void Character::setX(float x) {
     this->x = x;
 }
 
-int Character::getY() {
+float Character::getY() {
     return y;
 }
 
-void Character::setY(int y) {
+void Character::setY(float y) {
     this->y = y;
 }
 
-int Character::getSpeed() {
+float Character::getSpeed() {
     return speed;
 }
 
-void Character::setSpeed(int speed) {
+void Character::setSpeed(float speed) {
     this->speed = speed;
 }

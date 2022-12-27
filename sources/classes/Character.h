@@ -3,24 +3,24 @@
 
 class Character {
 private:
-    int x;
-    int y;
-    int speed;
+    float x;
+    float y;
+    float speed;
 
 public:
-    Character(int x, int y, int speed);
+    Character(float x, float y, float speed);
 
-    int getX();
+    float getX();
 
-    void setX(int x);
+    void setX(float x);
 
-    int getY();
+    float getY();
 
-    void setY(int y);
+    void setY(float y);
 
-    int getSpeed();
+    float getSpeed();
 
-    void setSpeed(int speed);
+    void setSpeed(float speed);
 
     virtual void move() = 0;
 };
