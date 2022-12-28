@@ -1,5 +1,9 @@
+#include <iostream>
+
 #include "Player.h"
 #include "raylib.h"
+
+const float GRAVITY = 100;
 
 Player::Player(float x, float y, float width, float height, float speed) : Character(x, y, width, height, speed) {
     this->prevX = x;
@@ -8,14 +12,23 @@ Player::Player(float x, float y, float width, float height, float speed) : Chara
 };
 
 void Player::move() {
+    // add a limit to positive and negative vertical velocity
+    if (this->getVelocityY() >= GRAVITY) {
+        this->setVelocityY(GRAVITY);
+    } else if (this->getVelocityY() <= -GRAVITY) {
+        this->setVelocityY(-GRAVITY);
+    }
+
+    std::cout << this->getVelocityY() << std::endl;
+
     if (IsKeyDown(KEY_UP)) {
         // move player upwards
         this->setY(this->getY() - this->getVelocityY() * GetFrameTime());
-        this->setVelocityY(this->getVelocityY() - 25 * GetFrameTime());
+        this->setVelocityY(this->getVelocityY() - GRAVITY * GetFrameTime());
     } else {
         // move player downwards
         this->setY(this->getY() + this->getVelocityY() * GetFrameTime());
-        this->setVelocityY(this->getVelocityY() + 25 * GetFrameTime());
+        this->setVelocityY(this->getVelocityY() + GRAVITY * GetFrameTime());
     }
 
     if (IsKeyDown(KEY_DOWN)) {
