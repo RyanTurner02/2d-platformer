@@ -7,6 +7,7 @@ private:
     float y;
     float width;
     float height;
+    float velocityY;
     float speed;
 
 public:
@@ -27,6 +28,10 @@ public:
     float getHeight();
 
     void setHeight(float height);
+
+    float getVelocityY();
+
+    void setVelocityY(float velocityY);
 
     float getSpeed();
 

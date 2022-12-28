@@ -8,6 +8,7 @@ class Player : public Character {
 private:
     float prevX;
     float prevY;
+    bool canJump;
 
 public:
     Player(float x, float y, float width, float height, float speed);
@@ -21,6 +22,10 @@ public:
     void setPrevY(float prevY);
 
     void move() override;
+
+    bool getCanJump();
+
+    void setCanJump(bool canJump);
 
     Rectangle toRectangle();
 };

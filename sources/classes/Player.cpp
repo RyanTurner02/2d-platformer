@@ -4,11 +4,18 @@
 Player::Player(float x, float y, float width, float height, float speed) : Character(x, y, width, height, speed) {
     this->prevX = x;
     this->prevY = y;
+    this->canJump = true;
 };
 
 void Player::move() {
     if (IsKeyDown(KEY_UP)) {
-        this->setY(this->getY() - this->getSpeed() * GetFrameTime());
+        // move player upwards
+        this->setY(this->getY() - this->getVelocityY() * GetFrameTime());
+        this->setVelocityY(this->getVelocityY() - 25 * GetFrameTime());
+    } else {
+        // move player downwards
+        this->setY(this->getY() + this->getVelocityY() * GetFrameTime());
+        this->setVelocityY(this->getVelocityY() + 25 * GetFrameTime());
     }
 
     if (IsKeyDown(KEY_DOWN)) {
@@ -38,6 +45,14 @@ float Player::getPrevY() {
 
 void Player::setPrevY(float prevY) {
     this->prevY = prevY;
+}
+
+bool Player::getCanJump() {
+    return canJump;
+}
+
+void Player::setCanJump(bool canJump) {
+    this->canJump = canJump;
 }
 
 Rectangle Player::toRectangle() {
