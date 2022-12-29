@@ -26,10 +26,6 @@ void Player::move() {
         this->setVelocityY(this->getVelocityY() + GRAVITY * GetFrameTime());
     }
 
-    if (IsKeyDown(KEY_DOWN)) {
-        this->setY(this->getY() + this->getSpeed() * GetFrameTime());
-    }
-
     if (IsKeyDown(KEY_LEFT)) {
         this->setX(this->getX() - this->getSpeed() * GetFrameTime());
     }
