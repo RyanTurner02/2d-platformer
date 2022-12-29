@@ -7,18 +7,18 @@
 void CollisionHandler::handlePlayerPlatform(Player *player, Platform platform) {
     // if the platform cannot be jumped through, prevent the player from moving towards it
     if (!platform.getCanJumpThrough()) {
-        if (std::floor(player->getX()) <= std::floor(platform.getX())) { // left
-            player->setX(platform.getX() - player->getWidth());
-        } else if (std::floor(player->getX() + player->getWidth()) >
-                   std::floor(platform.getX() + platform.getWidth())) { // right
-            player->setX(platform.getX() + platform.getWidth());
-        } else if (std::floor(player->getY()) < std::floor(platform.getY())) { // top
+        if (std::floor(player->getY()) < std::floor(platform.getY())) { // top
             player->setY(platform.getY() - player->getHeight());
             player->setVelocityY(100);
             player->setCanJump(true);
         } else if (std::floor(player->getY() + player->getHeight()) >
                    std::floor(platform.getY() + platform.getHeight())) { // bottom
             player->setVelocityY(player->getVelocityY() * -1);
+        } else if (std::ceil(player->getX() + player->getWidth()) >=
+                   std::floor(platform.getX() + platform.getWidth())) { // right
+            player->setX(platform.getX() + platform.getWidth());
+        } else if (player->getX() >= platform.getX() - player->getWidth()) { // left
+            player->setX(platform.getX() - player->getWidth());
         }
         return;
     }
