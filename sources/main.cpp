@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
     SetTargetFPS(60);
 
     Player player(200, 0, 10, 10, 100);
-    Platform platform(100, 300, 200, 25, true);
+    Platform platform(100, 300, 200, 200, false);
 
     while (!WindowShouldClose()) {
         // update
