@@ -14,7 +14,7 @@ Player::Player(float x, float y, float width, float height, float speed) : Chara
 void Player::move() {
     std::cout << this->getVelocityY() << std::endl;
 
-    if (IsKeyDown(KEY_UP)) {
+    if (IsKeyPressed(KEY_SPACE)) {
         this->canJump = false;
     }
 
