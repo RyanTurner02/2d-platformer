@@ -7,29 +7,18 @@
 void CollisionHandler::handlePlayerPlatform(Player *player, Platform platform) {
     // if the platform cannot be jumped through, prevent the player from moving towards it
     if (!platform.getCanJumpThrough()) {
-        // if the player is between the left and right sides
-        if (player->getX() >= platform.getX() - player->getWidth() &&
-            player->getX() + player->getWidth() <= platform.getX() + platform.getWidth() + player->getWidth()) {
-            // if the player is on the top
-            if (player->getY() <= platform.getY()) {
-                player->setY(platform.getY() - player->getHeight());
-                player->setVelocityY(100);
-                player->setCanJump(true);
-            }
-        }
-
-        // if the player is between the top and bottom
-        if (player->getY() + player->getHeight() > platform.getY() &&
-            player->getY() < platform.getY() + platform.getHeight()) {
-            // if the player is on the right
-            if (player->getX() + player->getWidth() >= platform.getX() + platform.getWidth()) {
-                player->setX(platform.getX() + platform.getWidth());
-            }
-
-            // if the player is on the left
-            if (player->getX() - player->getWidth() <= platform.getX() - player->getWidth()) {
-                player->setX(platform.getX() - player->getWidth());
-            }
+        if (std::floor(player->getX()) <= std::floor(platform.getX())) { // left
+            player->setX(platform.getX() - player->getWidth());
+        } else if (std::floor(player->getX() + player->getWidth()) >
+                   std::floor(platform.getX() + platform.getWidth())) { // right
+            player->setX(platform.getX() + platform.getWidth());
+        } else if (std::floor(player->getY()) < std::floor(platform.getY())) { // top
+            player->setY(platform.getY() - player->getHeight());
+            player->setVelocityY(100);
+            player->setCanJump(true);
+        } else if (std::floor(player->getY() + player->getHeight()) >
+                   std::floor(platform.getY() + platform.getHeight())) { // bottom
+            player->setVelocityY(player->getVelocityY() * -1);
         }
         return;
     }
