@@ -12,21 +12,16 @@ Player::Player(float x, float y, float width, float height, float speed) : Chara
 };
 
 void Player::move() {
-    // add a limit to positive and negative vertical velocity
-    if (this->getVelocityY() >= GRAVITY) {
-        this->setVelocityY(GRAVITY);
-    } else if (this->getVelocityY() <= -GRAVITY) {
-        this->setVelocityY(-GRAVITY);
-    }
-
     std::cout << this->getVelocityY() << std::endl;
 
     if (IsKeyDown(KEY_UP)) {
-        // move player upwards
+        this->canJump = false;
+    }
+
+    if (!canJump) { // move upwards if the player has jumped
         this->setY(this->getY() - this->getVelocityY() * GetFrameTime());
         this->setVelocityY(this->getVelocityY() - GRAVITY * GetFrameTime());
-    } else {
-        // move player downwards
+    } else { // move downwards if the player is on a platform
         this->setY(this->getY() + this->getVelocityY() * GetFrameTime());
         this->setVelocityY(this->getVelocityY() + GRAVITY * GetFrameTime());
     }

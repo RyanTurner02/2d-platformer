@@ -8,8 +8,10 @@
 int main(int argc, char **argv) {
     InitWindow(800, 600, "Braid");
 
-    Player player(200, 200, 10, 10, 100);
-    Platform platform(100, 300, 200, 50, true);
+    SetTargetFPS(60);
+
+    Player player(200, 0, 10, 10, 100);
+    Platform platform(100, 300, 200, 25, true);
 
     while (!WindowShouldClose()) {
         // update
