@@ -24,26 +24,20 @@ void Player::move() {
         this->setVelocityY(this->getVelocityY() + GRAVITY * GetFrameTime());
     }
 
-    std::cout << this->getVelocityX() << std::endl;
-
     if (IsKeyDown(KEY_LEFT)) {
-        if (this->getVelocityX() > 0) {
+        if (this->getVelocityX() <= -100) {
             this->setVelocityX(-100);
-        } else {
-            this->setVelocityX(this->getVelocityX() - 5);
         }
+        this->setVelocityX(this->getVelocityX() - 5);
         this->setX(this->getX() + this->getVelocityX() * GetFrameTime());
     } else if (IsKeyDown(KEY_RIGHT)) {
-        if (this->getVelocityX() < 0) {
+        if (this->getVelocityX() >= 100) {
             this->setVelocityX(100);
-        } else {
-            this->setVelocityX(this->getVelocityX() + 5);
         }
+        this->setVelocityX(this->getVelocityX() + 5);
         this->setX(this->getX() + this->getVelocityX() * GetFrameTime());
     } else {
-        if (this->getVelocityX() <= 0) {
-            this->setVelocityX(0);
-        }
+        this->setVelocityX(0);
     }
 }
 
