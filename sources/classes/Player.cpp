@@ -25,31 +25,35 @@ void Player::move() {
     }
 
     if (IsKeyDown(KEY_LEFT)) {
-        if (this->getVelocityX() > 0) {
+        if (this->getVelocityX() > 0) { // changing directions from right to left
             this->setVelocityX(0);
-        } else if (IsKeyDown(KEY_LEFT_SHIFT)) {
-            if (this->getVelocityX() <= -200) {
+        } else if (IsKeyDown(KEY_LEFT_SHIFT)) { // player is sprinting
+            if (this->getVelocityX() <= -200) { // set max horizontal velocity
                 this->setVelocityX(-200);
             }
-        } else {
-            if (this->getVelocityX() <= -100) {
+        } else { // player is not sprinting
+            if (this->getVelocityX() <= -100) { // set max horizontal velocity
                 this->setVelocityX(-100);
             }
         }
+
+        // update horizontal velocity and x-position
         this->setVelocityX(this->getVelocityX() - 100 * GetFrameTime());
         this->setX(this->getX() + this->getVelocityX() * GetFrameTime());
     } else if (IsKeyDown(KEY_RIGHT)) {
-        if (this->getVelocityX() < 0) {
+        if (this->getVelocityX() < 0) { // changing directions from left to right
             this->setVelocityX(0);
-        } else if (IsKeyDown(KEY_LEFT_SHIFT)) {
-            if (this->getVelocityX() >= 200) {
+        } else if (IsKeyDown(KEY_LEFT_SHIFT)) { // player is sprinting
+            if (this->getVelocityX() >= 200) { // set max horizontal velocity
                 this->setVelocityX(200);
             }
-        } else {
-            if (this->getVelocityX() >= 100) {
+        } else { // player is not sprinting
+            if (this->getVelocityX() >= 100) { // set max horizontal velocity
                 this->setVelocityX(100);
             }
         }
+
+        // update horizontal velocity and x-position
         this->setVelocityX(this->getVelocityX() + 100 * GetFrameTime());
         this->setX(this->getX() + this->getVelocityX() * GetFrameTime());
     } else {
