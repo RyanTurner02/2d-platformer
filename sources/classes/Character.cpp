@@ -5,6 +5,7 @@ Character::Character(float x, float y, float width, float height, float speed) {
     this->y = y;
     this->width = width;
     this->height = height;
+    this->velocityX = 0; // initial horizontal velocity
     this->velocityY = 0; // initial vertical velocity
     this->speed = speed;
 }
@@ -39,6 +40,14 @@ float Character::getHeight() {
 
 void Character::setHeight(float height) {
     this->height = height;
+}
+
+float Character::getVelocityX() {
+    return velocityX;
+}
+
+void Character::setVelocityX(float velocityX) {
+    this->velocityX = velocityX;
 }
 
 float Character::getVelocityY() {

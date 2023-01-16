@@ -12,8 +12,6 @@ Player::Player(float x, float y, float width, float height, float speed) : Chara
 };
 
 void Player::move() {
-    std::cout << this->getVelocityY() << std::endl;
-
     if (IsKeyPressed(KEY_SPACE)) {
         this->canJump = false;
     }
@@ -26,12 +24,26 @@ void Player::move() {
         this->setVelocityY(this->getVelocityY() + GRAVITY * GetFrameTime());
     }
 
-    if (IsKeyDown(KEY_LEFT)) {
-        this->setX(this->getX() - this->getSpeed() * GetFrameTime());
-    }
+    std::cout << this->getVelocityX() << std::endl;
 
-    if (IsKeyDown(KEY_RIGHT)) {
-        this->setX(this->getX() + this->getSpeed() * GetFrameTime());
+    if (IsKeyDown(KEY_LEFT)) {
+        if (this->getVelocityX() > 0) {
+            this->setVelocityX(-100);
+        } else {
+            this->setVelocityX(this->getVelocityX() - 5);
+        }
+        this->setX(this->getX() + this->getVelocityX() * GetFrameTime());
+    } else if (IsKeyDown(KEY_RIGHT)) {
+        if (this->getVelocityX() < 0) {
+            this->setVelocityX(100);
+        } else {
+            this->setVelocityX(this->getVelocityX() + 5);
+        }
+        this->setX(this->getX() + this->getVelocityX() * GetFrameTime());
+    } else {
+        if (this->getVelocityX() <= 0) {
+            this->setVelocityX(0);
+        }
     }
 }
 
