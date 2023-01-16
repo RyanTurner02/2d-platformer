@@ -17,8 +17,10 @@ void CollisionHandler::handlePlayerPlatform(Player *player, Platform platform) {
         } else if (std::ceil(player->getX() + player->getWidth()) >=
                    std::floor(platform.getX() + platform.getWidth())) { // right
             player->setX(platform.getX() + platform.getWidth());
+            player->setVelocityX(0);
         } else if (player->getX() >= platform.getX() - player->getWidth()) { // left
             player->setX(platform.getX() - player->getWidth());
+            player->setVelocityX(0);
         }
         return;
     }
