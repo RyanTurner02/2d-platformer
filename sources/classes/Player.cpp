@@ -25,14 +25,26 @@ void Player::move() {
     }
 
     if (IsKeyDown(KEY_LEFT)) {
-        if (this->getVelocityX() <= -100) {
-            this->setVelocityX(-100);
+        if (IsKeyDown(KEY_LEFT_SHIFT)) {
+            if (this->getVelocityX() <= -200) {
+                this->setVelocityX(-200);
+            }
+        } else {
+            if (this->getVelocityX() <= -100) {
+                this->setVelocityX(-100);
+            }
         }
         this->setVelocityX(this->getVelocityX() - 5);
         this->setX(this->getX() + this->getVelocityX() * GetFrameTime());
     } else if (IsKeyDown(KEY_RIGHT)) {
-        if (this->getVelocityX() >= 100) {
-            this->setVelocityX(100);
+        if (IsKeyDown(KEY_LEFT_SHIFT)) {
+            if (this->getVelocityX() >= 200) {
+                this->setVelocityX(200);
+            }
+        } else {
+            if (this->getVelocityX() >= 100) {
+                this->setVelocityX(100);
+            }
         }
         this->setVelocityX(this->getVelocityX() + 5);
         this->setX(this->getX() + this->getVelocityX() * GetFrameTime());
